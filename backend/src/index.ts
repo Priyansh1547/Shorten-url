@@ -16,10 +16,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use("/user", userRouter);
 
-app.set("view engine", "ejs");
-app.set("views", path.resolve("./src/views"));
-app.use(express.static(path.join(__dirname, "public")));
-
 const url =
   "mongodb+srv://patelpiyu468:1547%40%23piyu@short-url.gyinpna.mongodb.net/?retryWrites=true&w=majority&appName=short-url";
 
