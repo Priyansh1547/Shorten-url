@@ -23,7 +23,7 @@ connectMogodb(url)
   .then(() => console.log("db connected"))
   .catch((err) => console.log("error", err));
 
-app.get("/url/:shortId", async (req, res) => {
+app.get("/:shortId", async (req, res) => {
   const shortId = req.params.shortId;
   const entry = await URL.findOneAndUpdate(
     {
