@@ -54,7 +54,7 @@ function App() {
   const handleShortenUrl = async () => {
     const res = await axios.post(`${BACKEND_URL}/short`, { websiteUrl: url });
     setLoading(true);
-    setTimeout(() => setUploading(true), 2000);
+    setUploading(true)
     setShortId(res.data.id);
   };
 
