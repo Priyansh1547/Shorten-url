@@ -66,7 +66,7 @@ app.get("/analytics/:shortId", async (req, res) => {
   }
 });
 
-const uid = new ShortUniqueId({ length: 8 });
+const uid = new ShortUniqueId({ length: 4 });
 
 app.post("/short", async (req, res) => {
   const body = req.body.websiteUrl;
