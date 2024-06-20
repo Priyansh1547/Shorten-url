@@ -63,6 +63,7 @@ function App() {
     loggedInUser();
   }, [navigate]);
 
+<<<<<<< HEAD
   useEffect(() => {
     if (uploading) {
       setLoading(false);
@@ -82,11 +83,19 @@ function App() {
     return () => document.removeEventListener("keydown", down);
   }, []);
 
+=======
+>>>>>>> cdd94f14f7ed1e0726288c8f178ea3798558f99e
   const handleShortenUrl = async () => {
-    const res = await axios.post(`${BACKEND_URL}/short`, { websiteUrl: url });
-    setLoading(true);
-    setTimeout(() => setUploading(true), 2000);
-    setShortId(res.data.id);
+    try {
+      setLoading(true); // Display loader when the request starts
+      const res = await axios.post(`${BACKEND_URL}/short`, { websiteUrl: url });
+      setShortId(res.data.id);
+      setUploading(true);
+    } catch (error) {
+      console.error("Error posting data:", error);
+    } finally {
+      setLoading(false); // Hide loader when the request is complete
+    }
   };
 
   const logoutUser = async () => {
@@ -181,7 +190,6 @@ function App() {
                 className="w-full mt-4"
                 onClick={() => {
                   setUploading(false);
-                  setLoading(false);
                 }}
               >
                 New
