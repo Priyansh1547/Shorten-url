@@ -48,7 +48,7 @@ function Profile() {
     <>
       <div className="bg-zinc-950 p-3 flex justify-center  shadow-md sticky top-0 z-50">
         <div className=" text-white text-2xl font-semibold">
-          <a href="/">UrlShotener</a>
+          <a href="/home">UrlShotener</a>
         </div>
         <div className="w-full flex items-end justify-end">
           <DropdownMenu>
@@ -62,7 +62,7 @@ function Profile() {
               <DropdownMenuLabel>My account</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuGroup>
-                <DropdownMenuItem onClick={() => navigate("/")}>
+                <DropdownMenuItem onClick={() => navigate("/home")}>
                   <FaHome />
                   <span className="ml-3">Home</span>
                 </DropdownMenuItem>

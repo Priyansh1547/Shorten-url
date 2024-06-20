@@ -2,6 +2,12 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "./client.ts";
 import { Button } from "../../src/components/ui/button";
+import { Input } from "./ui/input";
+import { Label } from "./ui/label";
+import { LogOut, User } from "lucide-react";
+import axios from "axios";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { FaHome } from "react-icons/fa";
 import {
   Card,
   CardContent,
@@ -9,8 +15,6 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
-import { Input } from "./ui/input";
-import { Label } from "./ui/label";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -27,7 +31,6 @@ import {
   Settings,
   Smile,
 } from "lucide-react";
-
 import {
   CommandDialog,
   CommandEmpty,
@@ -38,10 +41,6 @@ import {
   CommandSeparator,
   CommandShortcut,
 } from "./ui/command";
-import { LogOut, User } from "lucide-react";
-import axios from "axios";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { FaHome } from "react-icons/fa";
 
 function App() {
   const navigate = useNavigate();
@@ -98,7 +97,7 @@ function App() {
     <>
       <div className="bg-zinc-950 p-3 flex justify-center shadow-md sticky top-0 z-50">
         <div className="text-white text-2xl font-semibold">
-          <a href="/">UrlShortener</a>
+          <a href="/home">UrlShortener</a>
         </div>
         <div className="w-full flex items-end justify-end">
           <DropdownMenu>
@@ -112,7 +111,7 @@ function App() {
               <DropdownMenuLabel>My account</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuGroup>
-                <DropdownMenuItem onClick={() => navigate("/")}>
+                <DropdownMenuItem onClick={() => navigate("/home")}>
                   <FaHome />
                   <span className="ml-3">Home</span>
                 </DropdownMenuItem>

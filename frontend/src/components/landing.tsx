@@ -7,31 +7,60 @@ import {
   CardContent,
 } from "./ui/card";
 import { useNavigate } from "react-router-dom";
+import { supabase } from "./client.ts";
+import { useEffect, useState } from "react";
 
 export default function Component() {
   const navigate = useNavigate();
+  const [loggedIn, setLoggedIn] = useState(false);
+  useEffect(() => {
+    const loggedInUser = async () => {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      if (user === null) {
+        setLoggedIn(false);
+      } else {
+        setLoggedIn(true);
+      }
+    };
+    loggedInUser();
+  }, [navigate]);
   return (
     <div className="flex flex-col min-h-[100dvh] dark:bg-muted">
       <header className="fixed top-0 left-0 right-0 px-4 lg:px-6 h-14 flex items-center backdrop-blur-md z-50 dark:bg-background dark:border-b dark:border-muted border-b border-gray-700 shadow-lg">
         <a href={"/"}>
           <h1 className="text-white text-xl font-bold">Url-Shortener</h1>
         </a>
-        <nav className="ml-auto flex gap-4 sm:gap-6">
-          <Button
-            variant="outline"
-            className="dark text-white bg-gray-950 hover:bg-gray-900"
-            onClick={() => navigate("/signup")}
-          >
-            Sign Up
-          </Button>
-          <Button
-            variant="outline"
-            className="dark text-white bg-blue-600 hover:bg-blue-700 border-blue-600 hover:border-blue-700"
-            onClick={() => navigate("/login")}
-          >
-            Login
-          </Button>
-        </nav>
+        {!loggedIn && (
+          <nav className="ml-auto flex gap-4 sm:gap-6">
+            <Button
+              variant="outline"
+              className="dark text-white bg-gray-950 hover:bg-gray-900"
+              onClick={() => navigate("/signup")}
+            >
+              Sign Up
+            </Button>
+            <Button
+              variant="outline"
+              className="dark text-white bg-blue-600 hover:bg-blue-700 border-blue-600 hover:border-blue-700"
+              onClick={() => navigate("/login")}
+            >
+              Login
+            </Button>
+          </nav>
+        )}
+        {loggedIn && (
+          <nav className="ml-auto flex gap-4 sm:gap-6">
+            <Button
+              variant="outline"
+              className="dark text-white bg-blue-600 hover:bg-blue-700 border-blue-600 hover:border-blue-700"
+              onClick={() => navigate("/home")}
+            >
+              Go to Home page
+            </Button>
+          </nav>
+        )}
       </header>
       <main className="flex-1 text-white bg-gray-900">
         <section className="w-full py-12 md:py-12 lg:py-16 xl:py-24 dark:bg-background">
@@ -137,20 +166,35 @@ export default function Component() {
               </p>
             </div>
             <div className="flex justify-center space-x-4">
-              <Button
-                variant="outline"
-                className="dark text-white bg-gray-950 hover:bg-gray-900"
-                onClick={() => navigate("/signup")}
-              >
-                Sign Up
-              </Button>
-              <Button
-                variant="outline"
-                className="dark text-white bg-blue-600 hover:bg-blue-700 border-blue-600 hover:border-blue-700"
-                onClick={() => navigate("/login")}
-              >
-                Login
-              </Button>
+              {!loggedIn && (
+                <>
+                  <Button
+                    variant="outline"
+                    className="dark text-white bg-gray-950 hover:bg-gray-900"
+                    onClick={() => navigate("/signup")}
+                  >
+                    Sign Up
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="dark text-white bg-blue-600 hover:bg-blue-700 border-blue-600 hover:border-blue-700"
+                    onClick={() => navigate("/login")}
+                  >
+                    Login
+                  </Button>
+                </>
+              )}
+              {loggedIn && (
+                <>
+                  <Button
+                    variant="outline"
+                    className="dark text-white bg-blue-600 hover:bg-blue-700 border-blue-600 hover:border-blue-700"
+                    onClick={() => navigate("/home")}
+                  >
+                    Go to home page
+                  </Button>
+                </>
+              )}
             </div>
           </div>
         </section>
