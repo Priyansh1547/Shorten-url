@@ -48,7 +48,7 @@ function Profile() {
     <>
       <div className="bg-zinc-950 p-3 flex justify-center  shadow-md sticky top-0 z-50">
         <div className=" text-white text-2xl font-semibold">
-          <a href="/">UrlShotner</a>
+          <a href="/">UrlShotener</a>
         </div>
         <div className="w-full flex items-end justify-end">
           <DropdownMenu>

@@ -27,7 +27,7 @@ function Login() {
     if (error) {
       // Handle error
     } else {
-      navigate("/");
+      navigate("/home");
     }
   };
   return (

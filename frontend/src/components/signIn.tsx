@@ -23,7 +23,7 @@ function Signup() {
         email: email,
         password: password,
       });
-      navigate("/");
+      navigate("/home");
     } catch (error) {
       console.log(error);
     }
