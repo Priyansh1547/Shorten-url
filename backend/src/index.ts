@@ -17,7 +17,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/user", userRouter);
 
 const url =
-  "mongodb+srv://patelpiyu468:1547%40%23piyu@short-url.gyinpna.mongodb.net/?retryWrites=true&w=majority&appName=short-url";
+  "mongodb+srv://patelpiyu468:1547%40%23piyu@short-url.gyinpna.mongodb.net/?retryWrites=true&w=majority&appName=short-url"; // this is not real it is example
 
 connectMogodb(url)
   .then(() => console.log("db connected"))
